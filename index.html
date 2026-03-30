@@ -13,7 +13,7 @@
             --wiki-border: #a2a9b1;
             --wiki-link: #0645ad;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif; background-color: #f6f6f6; color: #202122; margin: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f6f6f6; color: #202122; margin: 0; }
         .wiki-header-font { font-family: 'Linux Libertine', Georgia, serif; }
         .wiki-content p { margin-bottom: 0.5em; line-height: 1.6; }
         .hidden { display: none; }
@@ -48,138 +48,62 @@
                 </div>
             </div>
             <div class="flex-1 text-[#54595d]">
-                <h3 class="font-bold text-[14px] mb-2">尚未擁有帳號？</h3>
-                <p class="text-[14px] mb-4">維基百科是由全球志願者共同編寫的。加入我們，您可以：</p>
+                <h3 class="font-bold text-[14px] mb-2">研究員授權通知</h3>
+                <p class="text-[14px] mb-4">本系統已連結至 Alphabet 2026 雲端數據庫。所有登入活動均受監控。</p>
                 <ul class="text-[13px] list-disc pl-5 space-y-2">
-                    <li>建立個人監視清單</li>
-                    <li>參與專業領域的高級學術編輯</li>
-                    <li>存取 Alphabet 2026 語言學專用數據庫</li>
+                    <li>跨設備同步授權</li>
+                    <li>實時權限控管</li>
+                    <li>多重加密通訊協定</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 2. 研究報告頁面 (條目頁面) -->
+    <!-- 2. 研究報告頁面 -->
     <div id="report-page" class="hidden min-h-screen bg-white">
         <div class="flex justify-end p-1 px-5 text-[12px] text-[#0645ad] gap-4 bg-[#f6f6f6]">
-            <span id="display-username">研究員</span> <span>討論</span> <span>貢獻</span> 
+            <span id="display-username" class="font-bold">研究員</span> <span>討論</span> <span>貢獻</span> 
             <span class="cursor-pointer" onclick="location.reload()">登出</span>
         </div>
         <div class="flex">
-            <!-- 左側導航欄 -->
-            <div class="w-[160px] p-4 bg-[#f6f6f6] min-h-screen hidden md:block flex-shrink-0">
+            <div class="w-[160px] p-4 bg-[#f6f6f6] min-h-screen hidden md:block border-r">
                 <img src="https://zh.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-hk.svg" class="w-[100px] mb-5">
                 <div class="text-[12px] space-y-4 text-[#0645ad]">
-                    <div class="border-t border-[#c8ccd1] pt-2">
-                        <ul class="space-y-1"><li class="cursor-pointer">首頁</li><li class="cursor-pointer">隨機條目</li><li class="cursor-pointer">最近更改</li></ul>
-                    </div>
-                    <div class="border-t border-[#c8ccd1] pt-2 text-[#54595d]">
-                        <h3 class="text-[12px] font-normal mb-1">幫助</h3>
-                        <ul class="space-y-1 text-[#0645ad]"><li class="cursor-pointer">幫助中心</li><li class="cursor-pointer">方針與指引</li><li class="cursor-pointer">舉報問題</li></ul>
-                    </div>
+                    <div class="border-t border-[#c8ccd1] pt-2"><ul><li>首頁</li><li>隨機條目</li></ul></div>
                 </div>
             </div>
-            <!-- 主內容區 -->
-            <div class="flex-1 border-l border-[#a7d7f9] bg-white min-w-0">
-                <div class="h-10 bg-gradient-to-b from-white to-[#f6f6f6] border-b border-[#a2a9b1] flex justify-between px-1">
-                    <div class="flex items-end">
-                        <div class="bg-white border border-[#a2a9b1] border-b-white px-4 py-2 text-[13px] font-bold">條目</div>
-                        <div class="text-[#0645ad] px-4 py-2 text-[13px]">討論</div>
-                    </div>
-                    <div class="flex items-end">
-                        <div class="bg-white border border-[#a2a9b1] border-b-white px-4 py-2 text-[13px]">閱讀</div>
-                        <div class="text-[#0645ad] px-4 py-2 text-[13px]">編輯</div>
-                        <div class="text-[#0645ad] px-4 py-2 text-[13px]">檢視歷史</div>
-                        <div class="px-4 py-2 mb-1"><input type="text" placeholder="搜尋維基百科" class="border border-[#a2a9b1] text-xs p-1 w-32"></div>
-                    </div>
+            <div class="flex-1 border-l border-[#a7d7f9] bg-white p-10 wiki-content">
+                <div class="bg-[#fff9eb] border border-[#f2c05d] p-3 mb-6 text-[12px]">
+                    <b>雲端安全模式：</b> 您正透過授權終端存取數據庫。
                 </div>
-
-                <div class="p-8 md:p-10 wiki-content">
-                    <div class="bg-[#fff9eb] border border-[#f2c05d] p-3 mb-6 text-[12px]">
-                        <b>學術安全模式：</b> 正在嘗試連結環境生物掃描器... 您目前以授權研究員身份登入。
-                    </div>
-                    
-                    <h1 class="text-[1.8em] wiki-header-font border-b border-[#a2a9b1] pb-1 mb-2">英語語言學：語法、句法與形態學之跨維度演變研究報告 (2026)</h1>
-                    <p class="text-[13px] mb-4 text-[#54595d]">從維基百科，自由的百科全書</p>
-                    
-                    <div class="leading-relaxed space-y-4">
-                        <p><b>摘要：</b>本研究針對 21 世紀初期英語時態（Tense）系統的演化進行深度剖析。透過語義網絡的掃描發現，現代英語在學術溝通中正經歷從複雜完成體向直觀簡單體遷移的傾向。</p>
-                        
-                        <div class="border border-[#a2a9b1] bg-[#f8f9fa] p-4 inline-block min-w-[200px] my-5">
-                            <div class="font-bold text-center border-b mb-2">目錄</div>
-                            <ol class="text-sm list-decimal pl-8 space-y-1 text-[#0645ad]">
-                                <li class="cursor-pointer">核心形態：代數結構</li>
-                                <li class="cursor-pointer">語義場理論：界限模糊化</li>
-                                <li class="cursor-pointer">句法層級：分佈規律</li>
-                                <li class="cursor-pointer">參考文獻與受限數據集</li>
-                            </ol>
-                        </div>
-
-                        <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">1 核心形態：代數結構 <span class="text-[small] text-[#0645ad] font-normal ml-2 cursor-pointer">[編輯]</span></h2>
-                        <p>根據喬姆斯基（Chomsky）的轉換生成語法，動詞的時態特徵被視為句法樹中 T 節點的核心投射。在 2024 至 2026 年間的語料庫分析顯示，受全球化數字通訊影響，虛擬語氣的使用頻率下降...</p>
-
-                        <div class="pt-10 mt-10 border-t border-[#a2a9b1] text-[13px]">
-                            <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pb-1 mb-3">5 參考資料 <span class="text-[small] text-[#0645ad] font-normal ml-2 cursor-pointer">[編輯]</span></h2>
-                            <p class="mb-2">下列數據集僅供獲授權之 Alphabet Internal Team 存取：</p>
-                            <ul class="list-disc pl-5 space-y-1 text-[#0645ad]">
-                                <li class="cursor-pointer">[1] Alphabet Repository (2026) - <i>BitLife Simulation Archive</i>.</li>
-                                <li class="cursor-pointer">[2] Oxford Linguistics (v12.4) - <i>Modal Verbs Evolution</i>.</li>
-                                <li class="cursor-pointer">[3] Standard Language Processing Unit - <i>Simulation Module</i>.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <footer class="mt-16 pt-8 border-t border-[#a2a9b1] text-[12px] text-[#54595d] space-y-2">
-                        <p>本頁面最後修訂於 2026年3月29日 (星期日) 14:22。</p>
-                        <div class="flex gap-4 text-[#0645ad]">
-                            <span class="cursor-pointer">隱私方針</span>
-                            <span class="cursor-pointer">關於維基百科</span>
-                            <span class="cursor-pointer">免責聲明</span>
-                        </div>
-                    </footer>
-                </div>
+                <h1 class="text-[1.8em] wiki-header-font border-b border-[#a2a9b1] pb-1 mb-2">英語語言學：語法、句法與形態學之跨維度演變研究報告 (2026)</h1>
+                <p><b>摘要：</b>本研究針對 21 世紀初期英語時態系統進行分析...</p>
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">1 核心形態：代數結構</h2>
+                <p>根據喬姆斯基（Chomsky）的轉換生成語法，動詞的時態特徵被視為句法樹的核心投射...</p>
             </div>
         </div>
     </div>
 
     <!-- 3. 管理員面板 -->
     <div id="admin-page" class="hidden min-h-screen bg-[#f0f2f5] p-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#3366cc] mb-6 flex justify-between items-center">
-                <div>
-                    <h1 class="text-xl font-bold flex items-center gap-2">🛡️ 系統數據庫管理員面版</h1>
-                    <p class="text-gray-500 text-xs mt-1">權限等級：Level 4 - 全域存取</p>
-                </div>
-                <button onclick="location.reload()" class="bg-gray-100 hover:bg-red-50 text-gray-600 hover:text-red-600 px-4 py-2 rounded font-bold transition-colors">
-                    安全登出
-                </button>
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-600 mb-6 flex justify-between items-center">
+                <h1 class="text-xl font-bold">🛡️ 維基百科數據管理員 (Upstash 雲端版)</h1>
+                <button onclick="location.reload()" class="text-red-600 font-bold">登出</button>
             </div>
-
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- 新增研究員 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-[#a2a9b1] h-fit">
-                    <h3 class="font-bold mb-4 flex items-center gap-2 text-lg">➕ 授權新研究員</h3>
-                    <div class="space-y-4">
-                        <input id="newU" placeholder="設定用戶名" class="w-full border rounded p-2 text-sm outline-none focus:border-blue-500">
-                        <input id="newP" type="password" placeholder="設定初始密碼" class="w-full border rounded p-2 text-sm outline-none focus:border-blue-500">
-                        <button onclick="dbAddUser()" class="w-full bg-[#3366cc] text-white py-2 rounded hover:bg-[#4477dd] font-bold">確認授權</button>
-                    </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border h-fit">
+                    <h3 class="font-bold mb-4">➕ 新增研究員</h3>
+                    <input id="newU" placeholder="用戶名" class="w-full border p-2 text-sm mb-2 outline-none">
+                    <input id="newP" type="password" placeholder="密碼" class="w-full border p-2 text-sm mb-4 outline-none">
+                    <button onclick="dbAddUser()" class="w-full bg-blue-600 text-white py-2 font-bold rounded">發布授權</button>
                 </div>
-
-                <!-- 帳號管理清單 -->
-                <div class="md:col-span-2 bg-white rounded-xl shadow-sm border border-[#a2a9b1] overflow-hidden">
+                <div class="md:col-span-2 bg-white rounded-xl shadow-sm border overflow-hidden">
                     <table class="w-full text-left">
-                        <thead class="bg-gray-50 text-xs text-gray-500 uppercase">
-                            <tr>
-                                <th class="p-4 border-b font-medium">帳號名稱</th>
-                                <th class="p-4 border-b font-medium">權限角色</th>
-                                <th class="p-4 border-b font-medium">目前狀態</th>
-                                <th class="p-4 border-b font-medium">管理操作</th>
-                            </tr>
+                        <thead class="bg-gray-50 text-xs">
+                            <tr><th class="p-4 border-b">帳號</th><th class="p-4 border-b">狀態</th><th class="p-4 border-b">操作</th></tr>
                         </thead>
-                        <tbody id="user-table-body" class="divide-y divide-gray-100">
-                            <!-- 由 JavaScript 動態填入 -->
-                        </tbody>
+                        <tbody id="user-table-body"></tbody>
                     </table>
                 </div>
             </div>
@@ -188,131 +112,124 @@
 </div>
 
 <script>
-    // --- 後端 API 通訊函式 ---
-    async function apiRequest(data) {
-        try {
-            const response = await fetch('/api/auth', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-            return await response.json();
-        } catch (error) {
-            console.error("API Error:", error);
-            return { success: false, message: "無法連接到雲端伺服器" };
-        }
+    // --- 根據你提供的 Upstash 憑據自動配置 ---
+    const KV_URL = "https://settled-sunbird-88103.upstash.io";
+    const KV_TOKEN = "gQAAAAAAAVgnAAIncDI4YWQ2YzEyYzg3Njg0NjE5YjUwNDU1M2E4Zjk1OGMyNnAyODgxMDM";
+
+    // 基礎 Redis 指令工具
+    async function redisCmd(cmd) {
+        const response = await fetch(KV_URL, {
+            headers: { Authorization: `Bearer ${KV_TOKEN}` },
+            method: 'POST',
+            body: JSON.stringify(cmd)
+        });
+        const data = await response.json();
+        return data.result;
     }
 
-    // --- 登入邏輯 ---
+    // 讀取所有用戶數據
+    async function loadUsersFromCloud() {
+        const raw = await redisCmd(["GET", "wiki_user_data"]);
+        if (!raw) {
+            // 初始化默認帳號
+            const initial = [
+                { username: 'alphabet', password: "asdfghjkl;'", role: 'user', status: 'active' },
+                { username: 'admin', password: 'admin123', role: 'admin', status: 'active' }
+            ];
+            await saveUsersToCloud(initial);
+            return initial;
+        }
+        return JSON.parse(raw);
+    }
+
+    // 儲存用戶數據到雲端
+    async function saveUsersToCloud(users) {
+        await redisCmd(["SET", "wiki_user_data", JSON.stringify(users)]);
+    }
+
+    // 登入處理
     async function handleLogin() {
         const u = document.getElementById('wiki_user').value;
         const p = document.getElementById('wiki_pass').value;
         const err = document.getElementById('login-err');
         const btn = document.getElementById('login-btn');
 
-        if(!u || !p) return;
-
-        btn.disabled = true;
         btn.innerText = "驗證中...";
+        const users = await loadUsersFromCloud();
+        const user = users.find(x => x.username === u && x.password === p);
 
-        const result = await apiRequest({ action: 'login', username: u, password: p });
-
-        if (result.success) {
+        if (user) {
+            if (user.status === 'suspended') {
+                err.innerText = "您的帳號已被停權。";
+                err.classList.remove('hidden');
+                btn.innerText = "登入";
+                return;
+            }
             document.getElementById('login-screen').classList.add('hidden');
-            if (result.role === 'admin') {
-                showAdminPage();
+            if (user.role === 'admin') {
+                document.getElementById('admin-page').classList.remove('hidden');
+                renderUserTable(users);
             } else {
-                showReportPage(result.username);
+                document.getElementById('report-page').classList.remove('hidden');
+                document.getElementById('display-username').innerText = u;
             }
         } else {
-            err.innerText = result.message || "授權失敗：用戶名或密碼有誤。";
+            err.innerText = "帳號或密碼錯誤。";
             err.classList.remove('hidden');
-            btn.disabled = false;
             btn.innerText = "登入";
         }
     }
 
-    // --- 頁面切換 ---
-    function showReportPage(username) {
-        document.getElementById('report-page').classList.remove('hidden');
-        document.getElementById('display-username').innerText = username;
-        window.scrollTo(0, 0);
-    }
-
-    async function showAdminPage() {
-        document.getElementById('admin-page').classList.remove('hidden');
-        await renderUserTable();
-    }
-
-    // --- 管理員操作 ---
-    async function renderUserTable() {
+    // 渲染管理員表格
+    function renderUserTable(users) {
         const body = document.getElementById('user-table-body');
-        body.innerHTML = `<tr><td colspan="4" class="p-10 text-center text-gray-400">正在讀取雲端數據...</td></tr>`;
-        
-        const users = await apiRequest({ action: 'list' });
-        
         body.innerHTML = '';
-        if (Array.isArray(users)) {
-            users.forEach(u => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-gray-50 transition-colors";
-                tr.innerHTML = `
-                    <td class="p-4 font-medium text-gray-700">${u.username}</td>
-                    <td class="p-4">
-                        <span class="px-2 py-1 rounded-full text-[10px] ${u.role==='admin'?'bg-purple-100 text-purple-700':'bg-blue-100 text-blue-700'}">
-                            ${u.role==='admin'?'管理員':'研究員'}
-                        </span>
-                    </td>
-                    <td class="p-4">
-                        <span class="text-xs ${u.status==='active'?'text-green-600':'text-red-600'} font-bold">
-                            ${u.status==='active'?'● 正常':'● 停權'}
-                        </span>
-                    </td>
-                    <td class="p-4 flex gap-2">
-                        ${u.role !== 'admin' ? `
-                            <button onclick="dbToggleStatus('${u.username}', '${u.status}')" class="text-xs bg-gray-100 px-3 py-1 rounded hover:bg-gray-200 transition-colors">狀態變更</button>
-                            <button onclick="dbDeleteUser('${u.username}')" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100 transition-colors">移除</button>
-                        ` : '<span class="text-gray-300 text-xs italic">系統帳號</span>'}
-                    </td>
-                `;
-                body.appendChild(tr);
-            });
-        }
+        users.forEach(u => {
+            if (u.role === 'admin') return;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="p-4 border-b font-medium">${u.username}</td>
+                <td class="p-4 border-b text-xs ${u.status === 'active' ? 'text-green-600' : 'text-red-600'} font-bold">
+                    ${u.status === 'active' ? '正常' : '停權'}
+                </td>
+                <td class="p-4 border-b flex gap-2">
+                    <button onclick="dbToggleStatus('${u.username}')" class="bg-gray-100 px-2 py-1 rounded text-[10px]">狀態</button>
+                    <button onclick="dbDeleteUser('${u.username}')" class="text-red-600 px-2 py-1 rounded text-[10px]">移除</button>
+                </td>
+            `;
+            body.appendChild(tr);
+        });
     }
 
+    // 管理功能：新增
     async function dbAddUser() {
         const u = document.getElementById('newU').value;
         const p = document.getElementById('newP').value;
-        if(!u || !p) return;
-        
-        const result = await apiRequest({ action: 'add', username: u, password: p });
-        if(result.success) {
-            document.getElementById('newU').value = '';
-            document.getElementById('newP').value = '';
-            await renderUserTable();
-        } else {
-            alert(result.message);
-        }
+        if (!u || !p) return;
+        let users = await loadUsersFromCloud();
+        if (users.some(x => x.username === u)) return alert('用戶名已存在');
+        users.push({ username: u, password: p, role: 'user', status: 'active' });
+        await saveUsersToCloud(users);
+        document.getElementById('newU').value = ''; document.getElementById('newP').value = '';
+        renderUserTable(users);
     }
 
-    async function dbToggleStatus(targetUser, currentStatus) {
-        const newStatus = currentStatus === 'active' ? 'suspended' : 'active';
-        await apiRequest({ action: 'toggle', targetUser, newStatus });
-        await renderUserTable();
+    // 管理功能：切換狀態
+    async function dbToggleStatus(username) {
+        let users = await loadUsersFromCloud();
+        users = users.map(u => u.username === username ? { ...u, status: u.status === 'active' ? 'suspended' : 'active' } : u);
+        await saveUsersToCloud(users);
+        renderUserTable(users);
     }
 
-    async function dbDeleteUser(targetUser) {
-        if(!confirm(`確定要永久移除研究員「${targetUser}」的授權嗎？`)) return;
-        await apiRequest({ action: 'delete', targetUser });
-        await renderUserTable();
+    // 管理功能：刪除
+    async function dbDeleteUser(username) {
+        if (!confirm('確定移除授權？')) return;
+        let users = await loadUsersFromCloud();
+        users = users.filter(u => u.username !== username);
+        await saveUsersToCloud(users);
+        renderUserTable(users);
     }
-
-    // 支援 Enter 鍵快捷登入
-    document.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' && !document.getElementById('login-screen').classList.contains('hidden')) {
-            handleLogin();
-        }
-    });
 </script>
 
 </body>
