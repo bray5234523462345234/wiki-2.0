@@ -15,8 +15,36 @@
         }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f6f6f6; color: #202122; margin: 0; }
         .wiki-header-font { font-family: 'Linux Libertine', Georgia, serif; }
-        .wiki-content p { margin-bottom: 0.5em; line-height: 1.6; }
+        .wiki-content p { margin-bottom: 0.8em; line-height: 1.6; text-align: justify; }
+        .wiki-content ul { margin-bottom: 1em; list-style-type: disc; padding-left: 1.6em; }
         .hidden { display: none; }
+        
+        /* 目錄樣式 */
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 15px;
+            display: inline-block;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .toc-title { font-weight: bold; text-align: center; margin-bottom: 5px; }
+
+        /* 遊戲專屬樣式 */
+        #game-container {
+            background: #1a1a1a;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 2px solid #333;
+        }
+        .stat-bar { background: #333; height: 10px; border-radius: 5px; overflow: hidden; }
+        .stat-fill { background: #00ff00; height: 100%; transition: width 0.3s; }
+        
+        /* 參考文獻樣式 */
+        .reflist { font-size: 0.85em; color: #54595d; border-top: 1px solid #a2a9b1; padding-top: 10px; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -53,13 +81,13 @@
                 <ul class="text-[13px] list-disc pl-5 space-y-2">
                     <li>跨設備同步授權</li>
                     <li>實時權限控管</li>
-                    <li>多重加密通訊協定</li>
+                    <li>存取 2026 模擬遊戲模組</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 2. 研究報告頁面 -->
+    <!-- 2. 研究報告頁面 (含遊戲) -->
     <div id="report-page" class="hidden min-h-screen bg-white">
         <div class="flex justify-end p-1 px-5 text-[12px] text-[#0645ad] gap-4 bg-[#f6f6f6]">
             <span id="display-username" class="font-bold">研究員</span> <span>討論</span> <span>貢獻</span> 
@@ -69,17 +97,95 @@
             <div class="w-[160px] p-4 bg-[#f6f6f6] min-h-screen hidden md:block border-r">
                 <img src="https://zh.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-hk.svg" class="w-[100px] mb-5">
                 <div class="text-[12px] space-y-4 text-[#0645ad]">
-                    <div class="border-t border-[#c8ccd1] pt-2"><ul><li>首頁</li><li>隨機條目</li></ul></div>
+                    <div class="border-t border-[#c8ccd1] pt-2">
+                        <ul class="space-y-1">
+                            <li class="hover:underline cursor-pointer">首頁</li>
+                            <li class="hover:underline cursor-pointer">隨機條目</li>
+                            <li class="hover:underline cursor-pointer">最近修改</li>
+                        </ul>
+                    </div>
+                    <div class="border-t border-[#c8ccd1] pt-2">
+                        <p class="text-gray-500 font-bold mb-1">工具</p>
+                        <ul class="space-y-1">
+                            <li class="hover:underline cursor-pointer">鏈入頁面</li>
+                            <li class="hover:underline cursor-pointer">相關修改</li>
+                            <li class="hover:underline cursor-pointer">上傳檔案</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="flex-1 border-l border-[#a7d7f9] bg-white p-10 wiki-content">
+            <div class="flex-1 border-l border-[#a7d7f9] bg-white p-6 md:p-10 wiki-content max-w-4xl">
                 <div class="bg-[#fff9eb] border border-[#f2c05d] p-3 mb-6 text-[12px]">
-                    <b>雲端安全模式：</b> 您正透過授權終端存取數據庫。
+                    <b>雲端安全模式：</b> 您正透過授權終端存取 Alphabet 2026 數據庫。部分內容已受機器學習保護。
                 </div>
-                <h1 class="text-[1.8em] wiki-header-font border-b border-[#a2a9b1] pb-1 mb-2">英語語言學：語法、句法與形態學之跨維度演變研究報告 (2026)</h1>
-                <p><b>摘要：</b>本研究針對 21 世紀初期英語時態系統進行分析...</p>
-                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">1 核心形態：代數結構</h2>
-                <p>根據喬姆斯基（Chomsky）的轉換生成語法，動詞的時態特徵被視為句法樹的核心投射...</p>
+                
+                <h1 class="text-[1.8em] wiki-header-font border-b border-[#a2a9b1] pb-1 mb-2">英語語言學：跨維度演變與數字語境研究報告 (2026)</h1>
+                <p class="text-sm italic text-gray-600">維基百科，自由的百科全書</p>
+
+                <div class="toc">
+                    <div class="toc-title">目錄</div>
+                    <ul class="text-blue-700 space-y-0.5 list-none p-0 text-sm">
+                        <li>1 <span class="hover:underline cursor-pointer">緒論：數字轉型下的語言流變</span></li>
+                        <li>2 <span class="hover:underline cursor-pointer">核心形態學：代數結構分析</span></li>
+                        <li>3 <span class="hover:underline cursor-pointer">ALPHA-SIM 模擬實驗模組</span></li>
+                        <li>4 <span class="hover:underline cursor-pointer">句法簡化現象之量化觀測</span></li>
+                        <li>5 <span class="hover:underline cursor-pointer">參考文獻</span></li>
+                    </ul>
+                </div>
+
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">1 緒論：數字轉型下的語言流變</h2>
+                <p>在 2024 至 2026 年間，英語正經歷一場前所未有的「數字簡化」過程。隨著大規模語言模型（LLM）的普及，人類書寫習慣受到預測性文本（Predictive Text）的深層干預，導致語義熵值（Semantic Entropy）呈現顯著下降趨勢。</p>
+                <p>本報告旨在分析當代英語在社交媒體數據流與學術語境中的形態重組，並通過模擬器預測未來十年的發展動向。</p>
+
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">2 核心形態學：代數結構分析</h2>
+                <p>根據喬姆斯基（Chomsky）的轉換生成語法，動詞的時態特徵被視為句法樹的核心投射。在最新的 2026 觀測數據中，虛擬語氣（Subjunctive Mood）在非正式文本中的存活率僅剩 12.4%，取而代之的是由語氣助詞輔助的顯性分析形式。</p>
+                <ul>
+                    <li><b>語素融合：</b> 數字原生代傾向於將功能詞與實義詞高度合併。</li>
+                    <li><b>語法化趨勢：</b> 部分縮略語（如 'tbh', 'imo'）已逐漸演化為獨立的語氣標記位（Mood Marker）。</li>
+                </ul>
+
+                <!-- 遊戲區塊 -->
+                <h2 id="sim-section" class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">3 ALPHA-SIM 模擬實驗模組</h2>
+                <div id="game-container">
+                    <div class="flex justify-between items-center border-b border-[#333] pb-2 mb-4">
+                        <h3 class="text-lg">ALPHA-SIM 語言演化模擬器 v4.0</h3>
+                        <div class="text-xs">狀態: 運行中 (雲端授權已確認)</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <div class="text-[10px] mb-1 text-gray-400">語言複雜度 (Complexity)</div>
+                            <div class="stat-bar"><div id="bar-complexity" class="stat-fill" style="width: 70%"></div></div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] mb-1 text-gray-400">全球理解度 (Clarity)</div>
+                            <div class="stat-bar"><div id="bar-clarity" class="stat-fill" style="width: 40%"></div></div>
+                        </div>
+                    </div>
+
+                    <div id="game-log" class="h-32 overflow-y-auto text-xs mb-4 bg-black p-2 border border-[#333]">
+                        > 系統初始化完成...<br>
+                        > 正在加載 2026 語料庫數據...<br>
+                        > 等待研究員指令...
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="playGame('simplify')" class="border border-[#00ff00] py-2 text-xs hover:bg-[#00ff00] hover:text-black transition-colors font-bold">執行「簡化指令」</button>
+                        <button onclick="playGame('encrypt')" class="border border-[#00ff00] py-2 text-xs hover:bg-[#00ff00] hover:text-black transition-colors font-bold">執行「複雜化指令」</button>
+                    </div>
+                </div>
+
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">4 句法簡化現象之量化觀測</h2>
+                <p>觀測數據顯示，長難句的平均長度從 2010 年的 24 個單詞下降至 2026 年的 14 個單詞。這一趨勢在「移動優先」的語言環境中尤為明顯。研究小組發現，語法結構的扁平化伴隨著情緒表達標籤（Emoji/Stickers）的語法嵌入化。</p>
+
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">5 參考文獻</h2>
+                <div class="reflist">
+                    <ol class="list-decimal pl-5 space-y-1">
+                        <li>Alphabet Inc. (2025). <i>Neural Linguistic Trends in the Mid-20s</i>.</li>
+                        <li>Chomsky, N. (2023). <i>Reflections on Digital Syntax</i>. MIT Press.</li>
+                        <li>Wikipedia Contributors. (2026). <i>Evolution of Post-Modern English</i>.</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
@@ -112,11 +218,10 @@
 </div>
 
 <script>
-    // --- 根據你提供的 Upstash 憑據自動配置 ---
+    // --- Upstash 配置 ---
     const KV_URL = "https://settled-sunbird-88103.upstash.io";
     const KV_TOKEN = "gQAAAAAAAVgnAAIncDI4YWQ2YzEyYzg3Njg0NjE5YjUwNDU1M2E4Zjk1OGMyNnAyODgxMDM";
 
-    // 基礎 Redis 指令工具
     async function redisCmd(cmd) {
         const response = await fetch(KV_URL, {
             headers: { Authorization: `Bearer ${KV_TOKEN}` },
@@ -127,11 +232,9 @@
         return data.result;
     }
 
-    // 讀取所有用戶數據
     async function loadUsersFromCloud() {
         const raw = await redisCmd(["GET", "wiki_user_data"]);
         if (!raw) {
-            // 初始化默認帳號
             const initial = [
                 { username: 'alphabet', password: "asdfghjkl;'", role: 'user', status: 'active' },
                 { username: 'admin', password: 'admin123', role: 'admin', status: 'active' }
@@ -142,12 +245,11 @@
         return JSON.parse(raw);
     }
 
-    // 儲存用戶數據到雲端
     async function saveUsersToCloud(users) {
         await redisCmd(["SET", "wiki_user_data", JSON.stringify(users)]);
     }
 
-    // 登入處理
+    // 登入邏輯
     async function handleLogin() {
         const u = document.getElementById('wiki_user').value;
         const p = document.getElementById('wiki_pass').value;
@@ -180,7 +282,30 @@
         }
     }
 
-    // 渲染管理員表格
+    // 遊戲邏輯
+    let complexity = 70;
+    let clarity = 40;
+    function playGame(type) {
+        const log = document.getElementById('game-log');
+        let msg = "";
+        if(type === 'simplify') {
+            complexity -= 10; clarity += 15;
+            msg = "> 指令: 簡化語法系統。結果: 全球溝通效率提升，學術細微差別降低。";
+        } else {
+            complexity += 15; clarity -= 10;
+            msg = "> 指令: 注入新形態素。結果: 英語變體增加，理解難度提高。";
+        }
+        
+        complexity = Math.max(0, Math.min(100, complexity));
+        clarity = Math.max(0, Math.min(100, clarity));
+        
+        document.getElementById('bar-complexity').style.width = complexity + "%";
+        document.getElementById('bar-clarity').style.width = clarity + "%";
+        log.innerHTML += `<br>${msg}`;
+        log.scrollTop = log.scrollHeight;
+    }
+
+    // 管理功能
     function renderUserTable(users) {
         const body = document.getElementById('user-table-body');
         body.innerHTML = '';
@@ -189,9 +314,7 @@
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td class="p-4 border-b font-medium">${u.username}</td>
-                <td class="p-4 border-b text-xs ${u.status === 'active' ? 'text-green-600' : 'text-red-600'} font-bold">
-                    ${u.status === 'active' ? '正常' : '停權'}
-                </td>
+                <td class="p-4 border-b text-xs ${u.status === 'active' ? 'text-green-600' : 'text-red-600'} font-bold">${u.status === 'active' ? '正常' : '停權'}</td>
                 <td class="p-4 border-b flex gap-2">
                     <button onclick="dbToggleStatus('${u.username}')" class="bg-gray-100 px-2 py-1 rounded text-[10px]">狀態</button>
                     <button onclick="dbDeleteUser('${u.username}')" class="text-red-600 px-2 py-1 rounded text-[10px]">移除</button>
@@ -201,20 +324,16 @@
         });
     }
 
-    // 管理功能：新增
     async function dbAddUser() {
         const u = document.getElementById('newU').value;
         const p = document.getElementById('newP').value;
         if (!u || !p) return;
         let users = await loadUsersFromCloud();
-        if (users.some(x => x.username === u)) return alert('用戶名已存在');
         users.push({ username: u, password: p, role: 'user', status: 'active' });
         await saveUsersToCloud(users);
-        document.getElementById('newU').value = ''; document.getElementById('newP').value = '';
         renderUserTable(users);
     }
 
-    // 管理功能：切換狀態
     async function dbToggleStatus(username) {
         let users = await loadUsersFromCloud();
         users = users.map(u => u.username === username ? { ...u, status: u.status === 'active' ? 'suspended' : 'active' } : u);
@@ -222,7 +341,6 @@
         renderUserTable(users);
     }
 
-    // 管理功能：刪除
     async function dbDeleteUser(username) {
         if (!confirm('確定移除授權？')) return;
         let users = await loadUsersFromCloud();
