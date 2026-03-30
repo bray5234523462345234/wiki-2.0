@@ -1,3 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>維基百科，自由的百科全書</title>
+    <link rel="shortcut icon" href="https://zh.wikipedia.org/static/favicon/wikipedia.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --wiki-blue: #3366cc;
+            --wiki-bg: #f6f6f6;
+            --wiki-border: #a2a9b1;
+            --wiki-link: #0645ad;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f6f6f6; color: #202122; margin: 0; }
+        .wiki-header-font { font-family: 'Linux Libertine', Georgia, serif; }
+        .wiki-content p { margin-bottom: 0.8em; line-height: 1.6; text-align: justify; }
+        .wiki-content ul { margin-bottom: 1em; list-style-type: disc; padding-left: 1.6em; }
+        .hidden { display: none; }
+        
+        /* 目錄樣式 */
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 15px;
+            display: inline-block;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .toc-title { font-weight: bold; text-align: center; margin-bottom: 5px; }
+        
+        /* 參考文獻樣式 */
+        .reflist { font-size: 0.85em; color: #54595d; border-top: 1px solid #a2a9b1; padding-top: 10px; margin-top: 40px; }
+        .ref-link { color: var(--wiki-link); cursor: pointer; }
+        .ref-link:hover { text-decoration: underline; }
+        
+        /* 側邊欄樣式 */
+        .sidebar-link { color: var(--wiki-link); cursor: pointer; font-size: 12px; }
+        .sidebar-link:hover { text-decoration: underline; }
+
+        /* 遊戲層樣式 */
+        #game-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10000; }
+        #game-frame { width: 100%; height: 100%; border: none; }
+        .close-btn { position: absolute; top: 10px; right: 20px; color: white; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; cursor: pointer; z-index: 10001; }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div id="login-screen">
+        <div class="border-b border-[#a2a9b1] bg-white p-[10px] px-5 flex items-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Wikipedia-logo-v2-en.svg" width="40" class="mr-[10px]" alt="Wiki Logo">
+            <span class="text-[1.5em] wiki-header-font">維基百科</span>
+        </div>
+        <div class="max-w-[900px] mx-auto mt-10 flex flex-col md:flex-row gap-10 p-5">
+            <div class="flex-[1.2] bg-white border border-[#a2a9b1] p-[30px]">
+                <h2 class="text-[1.8em] wiki-header-font border-none m-0 mb-4">登入</h2>
+                <div id="login-err" class="hidden text-[#d33] text-[13px] border border-[#fcc] bg-[#fee] p-[10px] mb-[15px]"></div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block mb-1 text-sm">用戶名</label>
+                        <input type="text" id="wiki_user" class="w-full border border-[#a2a9b1] p-2 outline-none focus:border-[#36c]" autofocus>
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-sm">密碼</label>
+                        <input type="password" id="wiki_pass" class="w-full border border-[#a2a9b1] p-2 outline-none focus:border-[#36c]">
+                    </div>
+                    <button id="login-btn" onclick="handleLogin()" class="w-full bg-[#3366cc] text-white font-bold py-[10px] hover:bg-[#4477dd] transition-colors">
+                        登入
+                    </button>
+                    <p class="text-[12px] text-[#0645ad] cursor-pointer">忘記密碼？ ‧ 幫助登入</p>
+                </div>
+            </div>
+            <div class="flex-1 text-[#54595d]">
+                <h3 class="font-bold text-[14px] mb-2">研究員授權通知</h3>
+                <p class="text-[14px] mb-4">本系統已連結至 Alphabet 2026 雲端數據庫。所有登入活動均受監控。</p>
+                <ul class="text-[13px] list-disc pl-5 space-y-2">
+                    <li>跨設備同步授權</li>
+                    <li>實時權限控管</li>
+                    <li>學術文獻完整存取權</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="report-page" class="hidden min-h-screen bg-white">
+        <div class="flex justify-end p-1 px-5 text-[12px] text-[#0645ad] gap-4 bg-[#f6f6f6]">
+            <span id="display-username" class="font-bold">研究員</span> <span>討論</span> <span>貢獻</span> 
+            <span class="cursor-pointer" onclick="location.reload()">登出</span>
+        </div>
+        <div class="flex">
+            <div class="w-[160px] p-4 bg-[#f6f6f6] min-h-screen hidden md:block border-r">
+                <img src="https://zh.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-hk.svg" class="w-[100px] mb-5">
+                <div class="space-y-4">
+                    <div class="border-t border-[#c8ccd1] pt-2">
+                        <ul class="space-y-1">
+                            <li class="sidebar-link">首頁</li>
+                            <li class="sidebar-link">隨機條目</li>
+                            <li class="sidebar-link">最近修改</li>
+                        </ul>
+                    </div>
+                    <div class="border-t border-[#c8ccd1] pt-2">
+                        <p class="text-gray-500 font-bold mb-1 text-[11px]">工具</p>
+                        <ul class="space-y-1">
+                            <li class="sidebar-link">鏈入頁面</li>
+                            <li class="sidebar-link">相關修改</li>
+                            <li class="sidebar-link">特別頁面</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-1 border-l border-[#a7d7f9] bg-white p-6 md:p-10 wiki-content max-w-4xl">
+                <div class="bg-[#fff9eb] border border-[#f2c05d] p-3 mb-6 text-[12px]">
+                    <b>雲端安全模式：</b> 您正透過授權終端存取 Alphabet 2026 數據庫。內容已通過學術同行評審。
+                </div>
+                
+                <h1 class="text-[1.8em] wiki-header-font border-b border-[#a2a9b1] pb-1 mb-2">英語語言學：跨維度演變與數字語境研究報告 (2026)</h1>
+                <p class="text-sm italic text-gray-600">維基百科，自由的百科全書</p>
+
+                <div class="toc">
+                    <div class="toc-title">目錄</div>
+                    <ul class="text-blue-700 space-y-0.5 list-none p-0 text-sm">
+                        <li>1 <span class="hover:underline cursor-pointer">緒論：數字轉型下的語言流變</span></li>
+                        <li>2 <span class="hover:underline cursor-pointer">核心形態學：代數結構分析</span></li>
+                        <li>3 <span class="hover:underline cursor-pointer">句法簡化現象之量化觀測</span></li>
+                        <li>4 <span class="hover:underline cursor-pointer">社會語言學影響：網絡族群的語言隔離</span></li>
+                        <li>5 <span class="hover:underline cursor-pointer">參考文獻</span></li>
+                    </ul>
+                </div>
+
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">1 緒論：數字轉型下的語言流變</h2>
+                <p>在 2024 至 2026 年間，英語正經歷一場前所未有的「數字簡化」過程。隨著大規模語言模型（LLM）的普及，人類書寫習慣受到預測性文本（Predictive Text）的深層干預。</p>
+
+                <h2 class="text-[1.5em] font-normal border-b border-[#a2a9b1] pt-6 pb-1 mb-3">5 參考文獻</h2>
+                <div class="reflist">
+                    <ol class="list-decimal pl-5 space-y-1">
+                        <li>Alphabet Inc. (2025). <span class="ref-link" onclick="openGame(1)">Neural Linguistic Trends in the Mid-20s</span>.</li>
+                        <li>Chomsky, N. (2023). <span class="ref-link" onclick="openGame(2)">Reflections on Digital Syntax</span>.</li>
+                        <li>Halliday, M.A.K. (2024). <span class="ref-link" onclick="openGame(3)">Evolution of Systemic Functional Linguistics</span>.</li>
+                    </ol>
+                </div>
+                
+                <div class="mt-10 pt-5 border-t border-[#a2a9b1] text-[12px] text-gray-500">
+                    本頁面最後修訂於 2026年3月30日 (星期一) 21:45。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-page" class="hidden min-h-screen bg-[#f0f2f5] p-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-600 mb-6 flex justify-between items-center">
+                <h1 class="text-xl font-bold">🛡️ 維基百科數據管理員</h1>
+                <button onclick="location.reload()" class="text-red-600 font-bold">登出</button>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border h-fit">
+                    <h3 class="font-bold mb-4">➕ 新增研究員</h3>
+                    <input id="newU" placeholder="用戶名" class="w-full border p-2 text-sm mb-2 outline-none">
+                    <input id="newP" type="password" placeholder="密碼" class="w-full border p-2 text-sm mb-4 outline-none">
+                    <button onclick="dbAddUser()" class="w-full bg-blue-600 text-white py-2 font-bold rounded">發布授權</button>
+                </div>
+                <div class="md:col-span-2 bg-white rounded-xl shadow-sm border overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50 text-xs">
+                            <tr><th class="p-4 border-b">帳號</th><th class="p-4 border-b">狀態</th><th class="p-4 border-b">操作</th></tr>
+                        </thead>
+                        <tbody id="user-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-overlay">
+        <div class="close-btn" onclick="closeGame()">返回研究報告 (Esc)</div>
+        <iframe id="game-frame" src=""></iframe>
+    </div>
+</div>
+
 <script>
     // --- Upstash Configuration ---
     const KV_URL = "https://settled-sunbird-88103.upstash.io";
@@ -23,7 +205,7 @@
         if (e.key === 'Escape') closeGame();
     });
 
-    // --- Core Logic (Upstash & Login) ---
+    // --- Core Cloud Logic ---
     async function redisCmd(cmd) {
         try {
             const response = await fetch(KV_URL, {
@@ -53,6 +235,7 @@
         await redisCmd(["SET", "wiki_user_data", JSON.stringify(users)]);
     }
 
+    // --- Login Logic ---
     async function handleLogin() {
         const u = document.getElementById('wiki_user').value;
         const p = document.getElementById('wiki_pass').value;
@@ -138,3 +321,6 @@
         renderUserTable(users);
     }
 </script>
+
+</body>
+</html>
